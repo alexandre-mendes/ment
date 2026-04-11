@@ -1,0 +1,4 @@
+- Use seu conhecimento em kotlin e Spring
+- Sempre crie controller + Services + Repository (interface)
+- Sempre crie entedidades do banco com sufixo "Entity" e sempre dentro do package: model.entity
+- Sempre conversa uma entidade para um dto na camada de service
