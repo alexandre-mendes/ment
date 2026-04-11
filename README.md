@@ -32,3 +32,18 @@ A pasta `mock` no projeto contém os arquivos JSON que servem como base para o `
     ```
 
 3.  O `json-server` estará rodando e servindo os dados do arquivo `db.json`.
+
+## Ambiente Local com Docker
+
+Para facilitar a execução do ambiente de desenvolvimento, recomendamos o uso de Docker para levantar as dependências.
+
+### RabbitMQ
+
+Para iniciar um container RabbitMQ localmente com o painel de gerenciamento, execute o seguinte comando:
+
+```bash
+docker run -d --hostname my-rabbit --name some-rabbit -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+```
+
+- A porta `5672` é usada pela aplicação para conectar ao RabbitMQ.
+- A porta `15672` é usada para acessar o painel de gerenciamento web em `http://localhost:15672` (usuário: `guest`, senha: `guest`).
