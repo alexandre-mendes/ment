@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com"
+    }
+  ],
+  "medications": [
+    {
+      "id": 1,
+      "nome": "Dipirona",
+      "descricao": "Analgésico e antitérmico.",
+      "estoque": 100
+    },
+    {
+      "id": 2,
+      "nome": "Paracetamol",
+      "descricao": "Analgésico e antitérmico.",
+      "estoque": 50
+    },
+    {
+      "id": 3,
+      "nome": "Ibuprofeno",
+      "descricao": "Anti-inflamatório, analgésico e antitérmico.",
+      "estoque": 75
+    }
+  ]
+}
