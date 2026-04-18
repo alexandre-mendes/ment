@@ -1,0 +1,146 @@
+openapi: 3.0.1
+info:
+  title: API Emergência
+  version: 1.0.0
+paths:
+  /api/v1/medications:
+    get:
+      tags:
+        - medications
+      summary: Consultar medicamentos
+      description: Lista medicamentos, incluindo a quantidade disponível (soma dos saldos dos lotes ativos).
+      parameters:
+        - name: searchByName
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de medicamentos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MedicationResponse'
+  /api/v1/prescriptions:
+    post:
+      tags:
+        - prescriptions
+      summary: Criar prescrição
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrescriptionRequest'
+      responses:
+        '200':
+          description: Prescrição criada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrescriptionResponse'
+  /api/v1/prescriptions/{id}/apply:
+    patch:
+      tags:
+        - prescriptions
+      summary: Mudar status prescrição - (Aplicado)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrescriptionStatusChangeRequest'
+      responses:
+        '200':
+          description: Prescrição criada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrescriptionResponse'
+components:
+  schemas:
+    MedicationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        category:
+          type: string
+          description: Enum de categorias
+        salesPrice:
+          type: number
+          format: float
+        quantity:
+          type: number
+          format: float
+      required: [name, category, salesPrice]
+    MedicationResponse:
+      allOf:
+        - $ref: '#/components/schemas/MedicationRequest'
+        - type: object
+          properties:
+            id:
+              type: string
+    PrescriptionMedication:
+      type: object
+      properties:
+        medicationId:
+          type: string
+        quantity:
+          type: integer
+        observation:
+          type: string
+      required: [medicationId, quantity, observation]
+    PrescriptionRequest:
+      type: object
+      properties:
+        patientId:
+          type: string
+        doctorId:
+          type: string
+        medications:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrescriptionMedication'
+      required: [patientId, doctorId, sector, medications]
+    PrescriptionMenssageRequest:
+      type: object
+      properties:
+        patientId:
+          type: string
+        doctorId:
+          type: string
+        sector:
+          type: string
+          enum: [HOSPITALIZATION, EMERGENCY]
+        metadata:
+          type: string
+        medications:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrescriptionMedication'
+      required: [patientId, doctorId, sector, medications]
+    PrescriptionResponse:
+      allOf:
+        - $ref: '#/components/schemas/PrescriptionMenssageRequest'
+        - type: object
+          properties:
+            id:
+              type: string
+            status:
+              type: string
+    PrescriptionStatusChangeRequest:
+      type: object
+      properties:
+        status:
+          type: string
+          description: novo status
+      required: [status]
