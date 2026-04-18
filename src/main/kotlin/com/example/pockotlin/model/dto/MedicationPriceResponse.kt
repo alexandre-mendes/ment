@@ -6,14 +6,14 @@ import java.time.LocalDateTime
 import java.util.UUID
 
 data class MedicationPriceResponse(
-    @Schema(description = "ID do registro de preço", example = "b1eebc99-9c0b-4ef8-bb6d-6bb9bd380a22")
+    @get:Schema(description = "ID do registro de preço", example = "b1eebc99-9c0b-4ef8-bb6d-6bb9bd380a22")
     val id: UUID,
-    @Schema(description = "ID do medicamento", example = "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
+    @get:Schema(description = "ID do medicamento", example = "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
     val medicationId: UUID,
-    @Schema(description = "Preço de venda", example = "12.99")
+    @get:Schema(description = "Preço de venda", example = "12.99")
     val price: BigDecimal,
-    @Schema(description = "Indica se este é o preço ativo", example = "true")
+    @get:Schema(description = "Indica se este é o preço ativo", example = "true")
     val isActive: Boolean,
-    @Schema(description = "Data e hora em que o preço foi ativado", example = "2023-10-27T10:00:00")
+    @get:Schema(description = "Data e hora em que o preço foi ativado", example = "2023-10-27T10:00:00")
     val activatedAt: LocalDateTime
 )

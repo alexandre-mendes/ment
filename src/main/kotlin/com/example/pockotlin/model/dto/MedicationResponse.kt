@@ -6,14 +6,14 @@ import java.math.BigDecimal
 import java.util.UUID
 
 data class MedicationResponse(
-    @Schema(description = "ID único do medicamento", example = "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
+    @get:Schema(description = "ID único do medicamento", example = "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
     val id: UUID,
-    @Schema(description = "Nome do medicamento", example = "Paracetamol 500mg")
+    @get:Schema(description = "Nome do medicamento", example = "Paracetamol 500mg")
     val name: String,
-    @Schema(description = "Categoria do medicamento", example = "ANALGESICS_AND_ANTIPYRETICS")
+    @get:Schema(description = "Categoria do medicamento", example = "ANALGESICS_AND_ANTIPYRETICS")
     val category: MedicationCategory,
-    @Schema(description = "Preço de venda atual", example = "12.99")
+    @get:Schema(description = "Preço de venda atual", example = "12.99")
     val salesPrice: BigDecimal?,
-    @Schema(description = "Quantidade total em estoque", example = "150")
+    @get:Schema(description = "Quantidade total em estoque", example = "150")
     val quantity: Long
 )
