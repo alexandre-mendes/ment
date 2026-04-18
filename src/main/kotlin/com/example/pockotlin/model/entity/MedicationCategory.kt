@@ -1,0 +1,13 @@
+package com.example.pockotlin.model.entity
+
+enum class MedicationCategory {
+    ANALGESICS_AND_ANTIPYRETICS,
+    ANTI_INFLAMMATORIES,
+    ANTIBIOTICS,
+    ANTIHISTAMINES,
+    VITAMINS_AND_SUPPLEMENTS,
+    GASTROINTESTINAL,
+    DERMATOLOGICAL,
+    CARDIOVASCULAR,
+    OTHERS
+}
