@@ -16,7 +16,7 @@ data class MedicationLotEntity(
     val medication: MedicationEntity,
 
     @Column(nullable = false)
-    val quantity: Int,
+    var quantity: Int,
 
     @Column(nullable = false)
     val purchasePrice: BigDecimal,

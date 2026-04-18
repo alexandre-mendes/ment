@@ -12,6 +12,17 @@ class RabbitMQConfig {
     fun requestMedicalQueue(): Queue {
         return Queue("request_medical", true) // true for durable
     }
+
+    @Bean
+    fun authorizedRequestMedicalQueue(): Queue {
+        return Queue("authorized_request_medical", true)
+    }
+
+    @Bean
+    fun canceledRequestMedicalQueue(): Queue {
+        return Queue("canceled_request_medical", true)
+    }
+
     @Bean
     fun messageConverter(): Jackson2JsonMessageConverter {
         return Jackson2JsonMessageConverter()
