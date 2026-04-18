@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 import java.util.NoSuchElementException
+import java.util.UUID
 
 @Service
 class MedicationPriceService(
@@ -17,11 +18,11 @@ class MedicationPriceService(
 ) {
 
     @Transactional
-    fun create(request: MedicationPriceRequest): MedicationPriceResponse {
-        val medication = medicationRepository.findById(request.medicationId)
-            .orElseThrow { NoSuchElementException("Medication with id ${request.medicationId} not found") }
+    fun create(medicationId: UUID, request: MedicationPriceRequest): MedicationPriceResponse {
+        val medication = medicationRepository.findById(medicationId)
+            .orElseThrow { NoSuchElementException("Medication with id $medicationId not found") }
 
-        medicationPriceRepository.findByMedicationIdAndIsActiveTrue(request.medicationId).ifPresent {
+        medicationPriceRepository.findByMedicationIdAndIsActiveTrue(medicationId).ifPresent {
             it.isActive = false
             it.inactivatedAt = LocalDateTime.now()
             medicationPriceRepository.save(it)

@@ -8,6 +8,7 @@ import com.example.pockotlin.repository.MedicationRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.util.NoSuchElementException
+import java.util.UUID
 
 @Service
 class MedicationLotService(
@@ -16,9 +17,9 @@ class MedicationLotService(
 ) {
 
     @Transactional
-    fun create(request: MedicationLotRequest): MedicationLotResponse {
-        val medication = medicationRepository.findById(request.medicationId)
-            .orElseThrow { NoSuchElementException("Medication with id ${request.medicationId} not found") }
+    fun create(medicationId: UUID, request: MedicationLotRequest): MedicationLotResponse {
+        val medication = medicationRepository.findById(medicationId)
+            .orElseThrow { NoSuchElementException("Medication with id $medicationId not found") }
 
         val newLot = MedicationLotEntity(
             medication = medication,

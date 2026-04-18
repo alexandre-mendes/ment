@@ -146,30 +146,30 @@ Esta seção descreve os fluxos síncronos para gerenciar o catálogo de medicam
   ]
   ```
 
-### 5.3. Cadastro de Preço de Medicamento
+### 5.3. Adicionar Preço ao Medicamento
 
-- **Endpoint:** `POST /v1/medication-prices`
-- **Propósito:** Adicionar um novo registro de preço para um medicamento, mantendo o histórico.
+- **Endpoint:** `PATCH /v1/medications/{medicationId}/price`
+- **Propósito:** Adicionar um novo registro de preço para um medicamento, mantendo o histórico. O novo preço se torna o preço de venda atual.
+- **Parâmetro de URL:** `medicationId` (UUID do medicamento)
 - **Payload da Requisição (Exemplo):**
   ```json
-    {
-        "medicationId": "a677502f-cbb5-4620-af1d-3bd33bce0964",
-        "price": 12.99
-    }
+  {
+    "price": 18.50
+  }
   ```
-- **Processamento:** Um novo registro `MedicationPriceEntity` é criado e associado ao medicamento. Este novo preço passa a ser o preço corrente do medicamento.
+- **Processamento:** Um novo registro `MedicationPriceEntity` é criado e associado ao medicamento.
 
-### 5.4. Cadastro de Lote de Estoque
+### 5.4. Adicionar Lote de Estoque
 
-- **Endpoint:** `POST /v1/medication-lots`
+- **Endpoint:** `PATCH /v1/medications/{medicationId}/lot`
 - **Propósito:** Adicionar um novo lote de um medicamento ao estoque.
+- **Parâmetro de URL:** `medicationId` (UUID do medicamento)
 - **Payload da Requisição (Exemplo):**
   ```json
-    {
-        "medicationId": "a677502f-cbb5-4620-af1d-3bd33bce0964",
-        "quantity": 4,
-        "purchasePrice": 9.25,
-        "expirationDate": "2028-12-31"
-    }
+  {
+    "quantity": 200,
+    "purchasePrice": 10.20,
+    "expirationDate": "2028-12-31"
+  }
   ```
 - **Processamento:** Um novo registro `MedicationLotEntity` é criado e associado ao medicamento, incrementando o estoque total disponível.

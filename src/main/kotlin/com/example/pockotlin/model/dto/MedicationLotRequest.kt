@@ -6,8 +6,6 @@ import java.time.LocalDate
 import java.util.UUID
 
 data class MedicationLotRequest(
-    @get:Schema(description = "ID do medicamento ao qual o lote pertence", example = "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
-    val medicationId: UUID,
     @get:Schema(description = "Quantidade de itens no lote", example = "50")
     val quantity: Int,
     @get:Schema(description = "Preço de compra por unidade no lote", example = "5.25")
