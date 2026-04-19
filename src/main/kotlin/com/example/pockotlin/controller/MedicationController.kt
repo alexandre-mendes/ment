@@ -45,7 +45,7 @@ class MedicationController(
         @RequestBody request: MedicationLotRequest
     ): ResponseEntity<MedicationLotResponse> {
         val response = medicationLotService.create(id, request)
-        return ResponseEntity.status(HttpStatus.CREATED).body(response)
+        return ResponseEntity.ok(response)
     }
 
     @PatchMapping("/{id}/price")
@@ -54,6 +54,6 @@ class MedicationController(
         @RequestBody request: MedicationPriceRequest
     ): ResponseEntity<MedicationPriceResponse> {
         val response = medicationPriceService.create(id, request)
-        return ResponseEntity.status(HttpStatus.CREATED).body(response)
+        return ResponseEntity.ok(response)
     }
 }

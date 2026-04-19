@@ -10,4 +10,5 @@ import java.util.UUID
 interface MedicationRepository : JpaRepository<MedicationEntity, UUID> {
     fun findByNameContainingIgnoreCase(name: String): List<MedicationEntity>
     fun findByNameContainingIgnoreCaseAndCategory(name: String, category: MedicationCategory): List<MedicationEntity>
+    fun existsByNameIgnoreCase(name: String): Boolean
 }

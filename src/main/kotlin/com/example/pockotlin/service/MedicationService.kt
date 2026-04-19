@@ -18,6 +18,9 @@ class MedicationService(
 ) {
 
     fun create(medicationRequest: MedicationRequest): MedicationResponse {
+        if (medicationRepository.existsByNameIgnoreCase(medicationRequest.name)) {
+            throw IllegalArgumentException("Medication with name '${medicationRequest.name}' already exists.")
+        }
         val medicationEntity = MedicationEntity(
             name = medicationRequest.name,
             category = medicationRequest.category
