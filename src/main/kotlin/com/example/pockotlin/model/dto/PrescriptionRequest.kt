@@ -14,7 +14,7 @@ data class PrescriptionRequest(
     @get:Schema(description = "Lista de medicamentos da prescrição")
     val medications: List<PrescriptionMedication>,
     @get:Schema(description = "Campo livre para metadados em formato JSON", example = "{\"source\":\"mobile-app\"}")
-    val metadata: String?
+    val metadata: Map<String, Any>?
 )
 
 data class PrescriptionMedication(

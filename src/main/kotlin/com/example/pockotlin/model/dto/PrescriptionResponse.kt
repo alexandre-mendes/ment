@@ -17,7 +17,7 @@ data class PrescriptionResponse(
     @get:Schema(description = "Status atual da prescrição", example = "PENDING")
     val status: PrescriptionStatus,
     @get:Schema(description = "Campo livre para metadados em formato JSON", example = "{\"source\":\"mobile-app\"}")
-    val metadata: String?,
+    val metadata: Map<String, Any>?,
     @get:Schema(description = "Lista de medicamentos da prescrição")
     val medications: List<PrescriptionMedication>
 )
