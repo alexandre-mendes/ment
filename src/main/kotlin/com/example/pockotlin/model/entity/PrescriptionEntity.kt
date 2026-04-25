@@ -1,4 +1,5 @@
-import com.example.pockotlin.model.entity.converter.MapConverter
+package com.example.pockotlin.model.entity
+
 import jakarta.persistence.*
 import java.util.UUID
 
@@ -18,8 +19,7 @@ data class PrescriptionEntity(
     var status: PrescriptionStatus = PrescriptionStatus.PENDING,
 
     @Column(columnDefinition = "TEXT")
-    @Convert(converter = MapConverter::class)
-    val metadata: Map<String, Any>?,
+    val metadata: String?,
 
     @OneToMany(mappedBy = "prescription", cascade = [CascadeType.ALL], orphanRemoval = true)
     val items: MutableList<PrescriptionItemEntity> = mutableListOf()
