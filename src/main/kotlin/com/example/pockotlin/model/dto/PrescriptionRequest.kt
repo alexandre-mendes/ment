@@ -13,8 +13,8 @@ data class PrescriptionRequest(
     val sector: PrescriptionSector,
     @get:Schema(description = "Lista de medicamentos da prescrição")
     val medications: List<PrescriptionMedication>,
-    @get:Schema(description = "Campo livre para metadados em formato JSON", example = "{\"source\":\"mobile-app\"}")
-    val metadata: String?
+    @get:Schema(description = "Campo livre para metadados em formato JSON", example = "{\"emergency_prescription_id\": 7}")
+    val metadata: Map<String, Any>?
 )
 
 data class PrescriptionMedication(

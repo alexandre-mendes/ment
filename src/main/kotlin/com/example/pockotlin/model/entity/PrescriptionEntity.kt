@@ -1,5 +1,6 @@
 package com.example.pockotlin.model.entity
 
+import com.example.pockotlin.model.entity.converter.JsonToMapConverter
 import jakarta.persistence.*
 import java.util.UUID
 
@@ -18,8 +19,9 @@ data class PrescriptionEntity(
     @Enumerated(EnumType.STRING)
     var status: PrescriptionStatus = PrescriptionStatus.PENDING,
 
+    @Convert(converter = JsonToMapConverter::class)
     @Column(columnDefinition = "TEXT")
-    val metadata: String?,
+    val metadata: Map<String, Any>?,
 
     @OneToMany(mappedBy = "prescription", cascade = [CascadeType.ALL], orphanRemoval = true)
     val items: MutableList<PrescriptionItemEntity> = mutableListOf()
