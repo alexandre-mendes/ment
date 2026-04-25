@@ -9,4 +9,5 @@ import java.util.UUID
 @Repository
 interface MedicationPriceRepository : JpaRepository<MedicationPriceEntity, UUID> {
     fun findByMedicationIdAndIsActiveTrue(medicationId: UUID): Optional<MedicationPriceEntity>
+    fun findTopByMedicationIdOrderByActivatedAtDesc(medicationId: UUID): MedicationPriceEntity?
 }

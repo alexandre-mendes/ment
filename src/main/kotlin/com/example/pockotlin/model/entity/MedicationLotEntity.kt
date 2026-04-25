@@ -25,4 +25,6 @@ data class MedicationLotEntity(
     val entryDate: LocalDate = LocalDate.now(),
 
     val expirationDate: LocalDate? = null
-)
+) {
+    constructor() : this(null, MedicationEntity(), 0, BigDecimal.ZERO, LocalDate.now(), null)
+}

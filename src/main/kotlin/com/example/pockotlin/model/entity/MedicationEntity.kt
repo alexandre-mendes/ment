@@ -11,4 +11,6 @@ data class MedicationEntity(
     val name: String,
     @Enumerated(EnumType.STRING)
     val category: MedicationCategory
-)
+) {
+    constructor() : this(null, "", MedicationCategory.OTHERS)
+}
