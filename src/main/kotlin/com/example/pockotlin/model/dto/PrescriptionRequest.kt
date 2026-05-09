@@ -5,10 +5,10 @@ import io.swagger.v3.oas.annotations.media.Schema
 import java.util.UUID
 
 data class PrescriptionRequest(
-    @get:Schema(description = "ID do paciente", example = "p123")
-    val patientId: String,
-    @get:Schema(description = "ID do médico", example = "d456")
-    val doctorId: String,
+    @get:Schema(description = "ID do paciente", example = "123")
+    val patientId: Long,
+    @get:Schema(description = "ID do médico", example = "456")
+    val doctorId: Long,
     @get:Schema(description = "Setor da prescrição", example = "EMERGENCY")
     val sector: PrescriptionSector,
     @get:Schema(description = "Lista de medicamentos da prescrição")

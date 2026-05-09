@@ -8,10 +8,10 @@ import java.util.UUID
 data class PrescriptionResponse(
     @get:Schema(description = "ID da prescrição", example = "e2eebc99-9c0b-4ef8-bb6d-6bb9bd380a44")
     val id: UUID,
-    @get:Schema(description = "ID do paciente", example = "p123")
-    val patientId: String,
-    @get:Schema(description = "ID do médico", example = "d456")
-    val doctorId: String,
+    @get:Schema(description = "ID do paciente", example = "123")
+    val patientId: Long,
+    @get:Schema(description = "ID do médico", example = "456")
+    val doctorId: Long,
     @get:Schema(description = "Setor da prescrição", example = "EMERGENCY")
     val sector: PrescriptionSector,
     @get:Schema(description = "Status atual da prescrição", example = "PENDING")

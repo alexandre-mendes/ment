@@ -10,8 +10,8 @@ data class PrescriptionEntity(
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     val id: UUID? = null,
 
-    val patientId: String,
-    val doctorId: String,
+    val patientId: Long,
+    val doctorId: Long,
 
     @Enumerated(EnumType.STRING)
     val sector: PrescriptionSector,
